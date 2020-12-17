@@ -1,0 +1,25 @@
+
+
+.container{
+  background-image: url(./assets/background.jpg);
+  /* Full height */
+  
+
+  overflow: scroll;
+  min-width: 100%;
+  top:0px; bottom: 0px;
+  height: 100%;
+  background-repeat: repeat;
+  position: absolute;
+  overflow-x: scroll;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+  
