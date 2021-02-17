@@ -204,24 +204,6 @@ plt.ylabel("Temperature")
 plt.xlabel("Day")
 plt.title("Predicted data (first 75 days)")
 
-plt.subplot(3, 3, 7)
-plt.plot(epochs, loss, color='black')
-plt.ylabel("Loss (MSE)")
-plt.xlabel("Epoch")
-plt.title("Training curve")
-
-plt.subplot(3, 3, 8)
-plt.plot(y_test_descaled-y_predicted_descaled, color='black')
-plt.ylabel("Residual")
-plt.xlabel("Day")
-plt.title("Residual plot")
-
-plt.subplot(3, 3, 9)
-plt.scatter(y_predicted_descaled, y_test_descaled, s=2, color='black')
-plt.ylabel("Y true")
-plt.xlabel("Y predicted")
-plt.title("Scatter plot")
-
 plt.subplots_adjust(hspace = 0.5, wspace=0.3)
 plt.show()
 
