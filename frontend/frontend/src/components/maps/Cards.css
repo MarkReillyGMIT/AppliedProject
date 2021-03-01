@@ -1,0 +1,8 @@
+.right {
+    display: flex;
+    flex-direction: row;
+  }
+
+._map_text {
+  text-align: center;
+}
