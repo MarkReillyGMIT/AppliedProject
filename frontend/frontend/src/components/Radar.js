@@ -1,8 +1,10 @@
 import React from 'react'
-import { MapComponent } from './Map'
+import {MapComponent} from './Map'
 import { ViewData } from './ViewData'
 import styles from './styles/app.module.css'
 import useTemperatureApi from './hooks/useTemperatureApi'
+import '../App.css';
+
 
 const Radar = () => {
   const [dataWeather, setDataWeather] = useTemperatureApi()
@@ -10,15 +12,11 @@ const Radar = () => {
   const handleClickNewPosition = (latlng) => {
     if (!dataWeather.isLoadingApi) setDataWeather({ ...dataWeather, latlng })
   }
-
+  
   return (
     <div className={styles.wrapperGlobal}>
       <div className={styles.wrapperMap}>
-        <MapComponent
-          positionDefault={dataWeather.positionDefault}
-          onClickPosition={handleClickNewPosition}
-          position={dataWeather.latlng}
-        />
+        <MapComponent onClickPosition={handleClickNewPosition}/>
       </div>
       <div className={styles.wrapperViewData}>
         <ViewData
@@ -27,9 +25,6 @@ const Radar = () => {
           errorApi={dataWeather?.errorApi}
         />
         <div className={styles.wrapperInfo}>
-          <span>
-            Just click anywhere on the map and it will show you the weather data at that location
-          </span>
           <br />
           <div className={styles.credits}>
             <span>
