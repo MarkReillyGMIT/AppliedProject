@@ -10,10 +10,48 @@ Explain here who the authors are.
 
 
 \chapter{Introduction}
-The introduction should be about three to five pages long.
-Make sure you use references~\cite{einstein}
+
 \section{Outline}
-\section{History of Neural Networks}
+The aim of this project is to develop a full stack weather application that use's machine learning to predict certain weather conditions. There are dozens of weather applications available today that give a wide variety of information on future weather. However, most of these applications depend solely on API data and very few integrate both API and machine learning data into one application.
+
+\section{Background}
+Millions of people around the world regularly acquire information from weather forecasts for a large number of reasons. The increased growth in accessibility to the internet has allowed for a more suitable way for people to retrieve this information, in recent years, weather applications have quickly gained in popularity.
+
+The weather is always changing, and its conditions influence our daily lives, influencing what we choose to do and how we go about our day. Weather’s dynamic nature, however, means that factors such as temperature and precipitation are often constantly changing. It is for this reasons people want to know in detail what effects the forecast conditions will have so that they can plan. \cite{WeatherontheGo} With the ever changing weather there is a need for weather stations to provide accurate data to allow for more accurate forecasts.
+
+The equipment used to collect weather data across Ireland varies depending on the four different types of weather stations, Manned Weather Stations which record meteorological elements on an hourly basis using a form, as seen in figure \ref{MetForm}, Automatic Weather Stations record meteorological elements on an minute-by-minute basis, Climatological Stations records data for climate analysis and meteorological research, Rainfall Stations record daily and monthly rainfall data due to Ireland having extremely distributed rainfall there are over five hundred of these stations \cite{MET}. There are many  
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{img/MannedWeatherStation.jpg}
+\caption{Form used by meteorological observer at a manned station}
+\label{MetForm}
+\end{figure}
+weather instruments used to gather data but since this paper is focusing on the prediction of Temperature and Rainfall values, I will only discuss the instruments relevant with the above.
+
+Thermometers measure the high and low outdoor temperature in degrees Celsius or Fahrenheit. Today electronic maximum-minimum temperature sensor systems are used, see figure \ref{Thermometer} rather than back in the 1800s when they used liquid in glass thermometers.\cite{WeatherInstruments}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.2]{img/MaxMinThermometer.jpg}
+\caption{Electronic Thermometer used to collect temperature data.}
+\label{Thermometer}
+\end{figure}
+
+Rain gauges measure the amount of rainfall. There are two types of rain gauges: The Storage Rain Gauge and The Tipping Bucket Rain Gauge see figure \ref{Gauge}. The latter is used more widely due to it being more automated and less hands on.\cite{RainGauge}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.2]{img/storageRainGauge.jpg}
+\includegraphics[scale=0.2]{img/tippingBucketGauge.jpg}
+\caption{The Storage Rain Gauge and The Tipping Bucket Rain Gauge}
+\label{Gauge}
+\end{figure}
+
+\section{WEB APPLICATION DEVELOPMENT}
+
+\section{HISTORY OF MACHINE LEARNING}
+\section{SCOPE OF THE PROJECT}
 
 \chapter{Context}
 \begin{itemize}
@@ -23,28 +61,6 @@ Make sure you use references~\cite{einstein}
 \item List the resource URL (GitHub address) for the project and provide a brief list of the main elements at the URL.
 \end{itemize}
 
-\section{Filler}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi enim, interdum ut elit lobortis, bibendum tempus diam. Etiam turpis ex, viverra tristique finibus nec, feugiat at metus. Curabitur tempus gravida interdum. Donec ac felis a lorem scelerisque elementum. Vestibulum sit amet gravida tortor, a iaculis orci. Nam a molestie augue. Curabitur malesuada odio at mattis molestie. In hac habitasse platea dictumst. Donec eu lectus eget risus hendrerit euismod nec at orci. Praesent porttitor aliquam diam, eu vestibulum nisl sollicitudin vel. Nullam sed egestas mi.
-
-Quisque vel erat a justo volutpat auctor a nec odio. Sed rhoncus augue sit amet nisl tincidunt, vitae cursus tellus efficitur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque et auctor dui. Fusce ornare odio ipsum, et laoreet mi molestie sed. Cras at massa sit amet ipsum gravida aliquam. Nulla suscipit porta imperdiet. Fusce eros neque, bibendum sit amet consequat non, pulvinar quis ipsum.
-
-\subsection{More filler}
-Donec fermentum sapien ac rhoncus egestas. Nullam condimentum condimentum eros sit amet semper. Nam maximus condimentum ligula. Praesent faucibus in nisi vitae tempus. Sed pellentesque eleifend ante, ac malesuada nibh dapibus nec. Phasellus nisi erat, pulvinar vel sagittis sed, auctor et magna. Quisque finibus augue elit, consequat dignissim purus mollis nec. Duis ultricies euismod tortor, nec sodales libero pellentesque et. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
-Donec id interdum felis, in semper lacus. Mauris volutpat justo at ex dignissim, sit amet viverra massa pellentesque. Suspendisse potenti. Praesent sit amet ipsum non nibh eleifend pretium. In pretium sapien quam, nec pretium leo consequat nec. Pellentesque non dui lacus. Aenean sed massa lacinia, vehicula ante et, sagittis leo. Sed nec nisl ac tellus scelerisque consequat. Ut arcu metus, eleifend rhoncus sapien sed, consequat tincidunt erat. Cras ut vulputate ipsum.
-
-Curabitur et efficitur augue. Proin condimentum ultrices facilisis. Mauris nisi ante, ultrices sed libero eget, ultrices malesuada augue. Morbi libero magna, faucibus in nunc vitae, ultricies efficitur nisl. Donec eleifend elementum massa, sed eleifend velit aliquet gravida. In ac mattis est, quis sodales neque. Etiam finibus quis tortor eu consequat. Nullam condimentum est eget pulvinar ultricies. Suspendisse ut maximus quam, sed rhoncus urna.
-
-\section{Filler}
-Phasellus eu tellus tristique nulla porttitor convallis. Vestibulum ac est eget diam mollis consectetur. Donec egestas facilisis consectetur. Donec magna orci, dignissim vel sem quis, efficitur condimentum felis. Donec mollis leo a nulla imperdiet, in bibendum augue varius. Quisque molestie massa enim, vitae ornare lacus imperdiet non. Donec et ipsum id ante imperdiet mollis. Nullam est est, euismod sit amet cursus a, feugiat a lectus. Integer sed mauris dolor.
-
-Mauris blandit neque tortor, consequat aliquam nisi aliquam vitae. Integer urna dolor, fermentum ut iaculis ut, semper eu lacus. Curabitur mollis at lectus at venenatis. Donec fringilla diam ac risus imperdiet suscipit. Aliquam convallis quam vitae turpis interdum, quis pharetra lacus tincidunt. Nam dictum maximus lectus, vitae faucibus ante. Morbi accumsan velit nec massa tincidunt porttitor. Nullam gravida at justo id viverra. Mauris ante nulla, eleifend vitae sem vitae, porttitor lobortis eros.
-
-Cras tincidunt elit id nisi aliquam, id convallis ex bibendum. Sed vel odio fringilla, congue leo quis, aliquam metus. Nunc tempor vehicula lorem eu ultrices. Curabitur at libero luctus, gravida lectus sed, viverra mi. Cras ultrices aliquet elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed metus ante, suscipit sit amet finibus ut, gravida et orci. Nunc est odio, luctus quis diam in, porta molestie magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris pulvinar lacus odio, luctus tincidunt magna auctor ut. Ut fermentum nisl rhoncus, tempus nulla eget, faucibus tortor. Suspendisse eu ex nec nunc mollis pulvinar. Nunc luctus tempus tellus eleifend porta. Nulla scelerisque porttitor turpis porttitor mollis.
-
-Duis elementum efficitur auctor. Nam nisi nulla, fermentum sed arcu vel, posuere semper dui. Fusce ac imperdiet felis. Aenean quis vestibulum nisl. Integer sit amet tristique neque, at suscipit tortor. Morbi et placerat ante, vel molestie dui. Vivamus in nibh eget massa facilisis accumsan. Nunc et purus ac urna fermentum ultrices eget sit amet justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras elementum dui nunc, ac tempor odio semper et. Ut est ipsum, sollicitudin eleifend nisl eu, scelerisque cursus nunc. Nam at lectus vulputate, volutpat tellus vel, pharetra mauris. Integer at aliquam massa, at iaculis sem. Morbi nec imperdiet odio. In hac habitasse platea dictumst.
-
-Mauris a neque lobortis, venenatis erat ut, eleifend quam. Nullam tincidunt tellus quis ligula bibendum, a malesuada erat gravida. Phasellus eget tellus non risus tincidunt sagittis condimentum quis enim. Donec feugiat sapien sit amet tincidunt fringilla. Vivamus in urna accumsan, vehicula sem in, sodales mauris. Aenean odio eros, tristique non varius id, tincidunt et neque. Maecenas tempor, ipsum et sollicitudin rhoncus, nibh eros tempus dolor, vitae dictum justo massa in eros. Proin nec lorem urna. In ullamcorper vitae felis sit amet tincidunt. Maecenas consectetur iaculis est, eu finibus mi scelerisque et. Nulla id ex varius, ultrices eros nec, luctus est. Aenean ac ex eget dui pretium mattis. Ut vitae nunc lectus. Proin suscipit risus eget ligula sollicitudin vulputate et id lectus.
 
 
 \chapter{Methodology}
