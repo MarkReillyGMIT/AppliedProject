@@ -13,9 +13,7 @@ def weather(request):
         city = request.POST['city']
         print(type(city))
         print("City" +city)
-        ''' api key might be expired use your own api_key 
-            place api_key in place of appid ="your_api_key_here "  '''
-  
+        
         # source contain JSON data from API 
         apiKey = '4c877f2673f01a25cab9395e71356dad'
         weather = 'https://api.openweathermap.org/data/2.5/weather?q='+ city +'&APPID='+apiKey+'&units=metric'
@@ -37,11 +35,10 @@ def weather(request):
 def forecast(request): 
     if request.method == 'POST': 
         city = request.POST['city']
-       # print(type(city))
+        #Testing
+        #print(type(city))
         #print("City" +city)
-        ''' api key might be expired use your own api_key 
-            place api_key in place of appid ="your_api_key_here "  '''
-  
+        
         # source contain JSON data from API 
         apiKey = '4c877f2673f01a25cab9395e71356dad'
         forecast = 'https://api.openweathermap.org/data/2.5/forecast?q='+ city +'&APPID='+apiKey+'&units=metric'

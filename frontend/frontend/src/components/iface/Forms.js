@@ -4,7 +4,6 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Table from 'react-bootstrap/Table'
-import Jumbotron from 'react-bootstrap/Jumbotron'
 import Graph from './Graph'
 import {API_KEY, monthNames} from '../../constants';
 
@@ -173,15 +172,6 @@ export default class Forms extends Component {
                 </Table>}
 
                 {this.state.tableVisible && this.state.empty && <Graph forecast={this.state.forecast} date={this.state.date} />}
-                
-               { this.state.previewText && <Jumbotron>
-                            <h3>
-                                This is an example of a simple single page weather app, based on ReactJS using OpenWeatherMap API and leaflet maps, Chartjs for graphs, Booststrap for styles and bundled with webpack
-                         </h3>   
-                            <p>
-                            <a className="btn btn-primary" href="https://github.com/h4x0rlol/react-interactive-weather" role="button">Source code</a>
-                     </p>
-               </Jumbotron>}
 
             </div>
         )

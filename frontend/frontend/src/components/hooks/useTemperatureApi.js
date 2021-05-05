@@ -1,6 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { getDataApi } from '../utils/getDataApi'
+
+/**
+ * This class returns useTemperatureApi which is setting
+ * the setDataWeather constant.
+ */
 
 function useTemperatureApi (positionDefault = [4.660779178475431, -74.08494168529754]) {
   const [dataWeather, setDataWeather] = useState({ latlng: { lat: positionDefault[0], lng: positionDefault[1] }, positionDefault, isLoadingApi: false, errorApi: null })

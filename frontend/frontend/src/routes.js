@@ -5,6 +5,10 @@ import  NavBar  from './components/NavBar/Navbar';
 import Radar from './components/Radar';
 import App from '../src/App';
 import { Route, Switch, Redirect } from 'react-router-dom';
+/**
+ * 
+ * This class manages the routes for the project.
+ */
 
 export const Routes = () => {
   return (
