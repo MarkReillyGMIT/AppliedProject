@@ -51,7 +51,7 @@ Rain gauges measure the amount of rainfall. There are two types of rain gauges: 
 \section{WEB APPLICATION DEVELOPMENT}
 A Web Application (WA) is a computer program that utilizes web browsers and web technology to perform tasks over the Internet. Web application development is the creation of application programs that reside on servers and are delivered to the users device over the Internet \cite{WebAppDef}.
 
-WA's use a combination of server-side scripts (Django) to handle the storage and retrieval of data, and client-side scripts (React) to display that data to users \cite{WebApp}. Client-side refers to an application running on a web browser.Client-side programming typically utilizes HTML, CSS, JavaScript combined with a frontend framework such as React. Server-side programming powers the client-side programming and is used to create scripts that enables the web application to have various features. Server-side programming has many different coding languages such as Python, Ruby, Java \cite{WebAppDef}.
+WA's use a combination of server-side scripts (Django) to handle the storage and retrieval of data, and client-side scripts (ReactJS) to display that data to users \cite{WebApp}. Client-side refers to an application running on a web browser.Client-side programming typically utilizes HTML, CSS, JavaScript combined with a frontend framework such as ReactJS. Server-side programming powers the client-side programming and is used to create scripts that enables the web application to have various features. Server-side programming has many different coding languages such as Python, Ruby, Java \cite{WebAppDef}.
 
 Data is exchanged over the network using HyperText Transfer Protocol (HTTP). An advantage of this approach is that the users do not depend on any specific operating system or hardware configuration. Hence, WA's are cross-platform software. They vary in functionality and design but are setup to serve the same purpose, which is to provide the user with features and accessibility to information.
 
@@ -151,7 +151,7 @@ In Chapter 7, I will outline what I have learned from this project and highlight
 
 \section{Github Structure}
 
-The \href{https://github.com/MarkReillyGMIT/AppliedProject}{Github} resource URL can be found by clicking \href{https://github.com/MarkReillyGMIT/AppliedProject}{Here}. The git repository contains four folders: Dissertation, ReadMeFiles, backend and front-end. The Dissertation folder contains all files related to the development of the dissertation document. The ReadMeFiles folder contains all images that will be displayed on the README. The backend folder contains all the related code for the Django backend and neural network computation. The front-end folder contains all the related code for the React front-end. There is a requirements.txt file that has all the required libraries necessary for the project to run. The README.md file will contain a brief description of the project and how to run the project. The gitignore file is a text file that tells Git which files or folders to ignore in a project. 
+The \href{https://github.com/MarkReillyGMIT/AppliedProject}{Github} resource URL can be found by clicking \href{https://github.com/MarkReillyGMIT/AppliedProject}{Here}. The git repository contains four folders: Dissertation, ReadMeFiles, backend and front-end. The Dissertation folder contains all files related to the development of the dissertation document. The ReadMeFiles folder contains all images that will be displayed on the README. The backend folder contains all the related code for the Django backend and neural network computation. The front-end folder contains all the related code for the ReactJS front-end. There is a requirements.txt file that has all the required libraries necessary for the project to run. The README.md file will contain a brief description of the project and how to run the project. The gitignore file is a text file that tells Git which files or folders to ignore in a project. 
 
 
 \chapter{Methodology}
@@ -264,18 +264,91 @@ In this chapter I will discuss the technologies used in this project at conceptu
 \section{ReactJS}
 In this section I will discuss what ReactJS is and the features it provides.
 
-\subsection{About ReactJS}
-ReactJS is JavaScript library which is deployed to develop reusable user interface (UI) components. React basically enables development of large and complex web based applications or mobile applications which can change its data without subsequent page refreshes. React abstracts the Document Object Model (DOM), offering a simple, performing and robust application development experience \cite{aggarwal2018modern}. React is only concerned with state management and rendering that state to the DOM. Using React usually requires additional libraries for other functionality such as routing.
-
-
-\subsection{Features of ReactJS}
-
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.3]{img/ReactJS.png}
+\includegraphics[scale=0.2]{img/ReactJS.png}
 \caption{ReactJS}
 \label{React}
 \end{figure}
+
+\subsection{About ReactJS}
+ReactJS is JavaScript library which is deployed to develop reusable user interface (UI) components. ReactJS basically enables development of large and complex web based applications or mobile applications which can change its data without subsequent page refreshes. ReactJS abstracts the Document Object Model (DOM), offering a simple, performing and robust application development experience \cite{aggarwal2018modern}. ReactJS is only concerned with state management and rendering that state to the DOM. Using ReactJS usually requires additional libraries for other functionality such as routing.
+
+
+\subsection{Features of ReactJS}
+\paragraph{A) Lightweight DOM For Optimum Performance.}
+ReactJS creates a much more efficient and light weight DOM. In the majority of other web development frameworks, the browser DOM is directly communicated with which results in the entire DOM tree to be changed for every piece of data or event happening on each page \cite{aggarwal2018modern}. This adversely effects the performance when there is large amounts of data being processed. 
+On the other hand, ReactJS has for every DOM object there is a "virtual DOM object", which is basically a lightweight copy. The virtual DOM object has the same properties as a real DOM object but it does not have the power to change what is on the screen. Manipulating the DOM is slow but manipulating the virtual DOM is faster as nothing gets written to screen. This results in a fast and robust performance of the application.
+
+\paragraph{B) Easy Learning Curve.}
+The difference with ReactJS and other JavaScript libraries is that in ReactJS it enables one to quickly get comfortable with the framework. The learning curve is extremely easy and one gets along without many complications \cite{aggarwal2018modern}. The framework itself is relatively simple to learn unlike other frameworks were you have to learn the concepts of the framework \cite{aggarwal2018modern, islam2017reactjs}. 
+
+\paragraph{C) JSX.}
+JSX is a JavaScript Extension Syntax used in ReactJS to easily write HTML and JavaScript together. It is not mandatory to use JSX while developing a ReactJS application but it is recommended because of how easy development is made using it. I have used JSX in this project. See below for an example of JSX code and see figure \ref{JSX} for the output of the below code. There are few lines at the top used to import some ReactJS APIs. We embed the use of any JavaScript expression in JSX by wrapping them in curly braces except if-else statements. But we can use conditional statements instead of if-else statements in JSX. Below is the example where conditional expressing is embedded in JSX \cite{JSX}.
+
+\begin{minted}{javascript}
+import React from 'react';
+import ReactDOM from 'react-dom';
+ 
+let i = 1;
+ 
+const element = <h1>{ (i == 1) ? 'Hello World!' : 'False!' } <h1>;
+  
+ReactDOM.render(
+    element,
+    document.getElementById("root")
+);
+
+\end{minted}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/JSX.png}
+\caption{JSX}
+\label{JSX}
+\end{figure}
+
+\paragraph{D) One Way Data Binding}
+One way data binding means that when designing an application often the child components are nested within the parent components. This helps components be simple and predictable. One way data flow ensures that data flows throughout the application in a single direction to allow for more control between the states and models in the application \cite{laydeveloping}. If a change is made on the upstream data, the components using that data downstream will re-render and display those changes.  
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/OneWayDataFlow.png}
+\caption{One Way Data Binding}
+\label{OneWayDataFlow}
+\end{figure}
+\newpage
+
+\section{Comparing ReactJS and AngularJS}
+In this section I will compare ReactJS and AngularJS to show the differences between each framework and the attributes that influenced my decision into picking ReactJS. 
+
+\begin{center}
+\begin{table}[h]
+ \begin{tabular}{ |p{3cm}||p{4cm}|p{4cm}|  }
+ \hline
+ \multicolumn{3}{|c|}{AngularJS V ReactJS} \\
+ \hline
+ Attribute & AngularJS & ReactJS \\ [0.7ex] 
+ \hline
+ DOM & Regular DOM & Virtual DOM  \\
+ \hline
+ Learning Curve & High & Low  \\
+ \hline
+ Packaging & Weak & Strong  \\
+ \hline
+ Abstraction & Weak & Strong \\
+ \hline
+ Rendering & Client side & Server side \\
+ \hline
+ Community & Large & Growing \\
+ \hline
+ Binding & Two way & Uni-Directional  \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{\label{tab:comparing}Comparing ReactJS and AngularJS \cite{kumar2016comparative} }
+\end{table}
+\end{center}
+
+The stand out differences that influenced my decision in picking ReactJS was the learning curve, packaging, debugging and the virtual DOM. I wanted a relatively easy learning curve as all the technologies were new to me in this project. When researching I learned that there is many packages and libraries compatible with ReactJS.
 
 \section{Django}
 \subsection{About Django}
@@ -287,7 +360,7 @@ ReactJS is JavaScript library which is deployed to develop reusable user interfa
 
 \section{APIs}
 
-\section{Libaries}
+\section{Libraries}
 
 \section{Languages}
 
