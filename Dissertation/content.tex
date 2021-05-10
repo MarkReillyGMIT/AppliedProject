@@ -908,6 +908,154 @@ export const MapComponent = ({ onClickPosition }) => {
 \label{BackEnd}
 Back-end architecture is associated with the logical aspects of the application, such as paths, database connectivity, and defining the application's internal logic. This section will explain how  the Back-end Architecture is created, all the components and how they all combined together to provide a bunch of functions for different components.
 
+\subsection{Django REST Framework}
+Django REST Framework serializes data form the Django Object-Relational Mapping (ORM). It was utilised on the Back-end to retrieve data for the Front-end from the Open Weather API. It was very helpful with passing data from Back-end to Front-end. The following code shows how the POST request is sent to the Open Weather API service:
+
+\begin{minted}{Python}
+from django.http import response
+from django.http.response import JsonResponse
+from django.shortcuts import render 
+# import json to load json data to python dictionary 
+import json 
+# urllib.request to make a request to api 
+import urllib.request 
+from django.views.decorators.csrf import csrf_exempt
+
+# This class is used to send a POST request to the Open Weather API. 
+
+@csrf_exempt 
+def weather(request): 
+if request.method == 'POST': 
+    city = request.POST['city']
+    print(type(city))
+    print("City" +city)
+    
+    # source contain JSON data from API 
+    apiKey = '4c877f2673f01a25cab9395e71356dad'
+    weather = 'https://api.openweathermap.org/data/2.5/weather?q='+ city
+    +'&APPID='+apiKey+'&units=metric'
+
+    sourceForecast = urllib.request.urlopen(weather).read() 
+
+    # converting JSON data to a dictionary 
+    list_of_data = json.loads(sourceForecast) 
+
+    # data for variable list_of_data 
+    data = {} 
+    return JsonResponse(list_of_data)
+else: 
+    data ={} 
+
+return JsonResponse(data)
+
+@csrf_exempt 
+def forecast(request): 
+if request.method == 'POST': 
+    city = request.POST['city']
+    #Testing
+    #print(type(city))
+    #print("City" +city)
+    
+    # source contain JSON data from API 
+    apiKey = '4c877f2673f01a25cab9395e71356dad'
+    forecast = 'https://api.openweathermap.org/data/2.5/forecast?q='+ city 
+    +'&APPID='+apiKey+'&units=metric'
+
+    sourceForecast = urllib.request.urlopen(forecast).read() 
+
+    # converting JSON data to a dictionary 
+    list_of_data = json.loads(sourceForecast) 
+
+    # data for variable list_of_data 
+    data = { } 
+    return JsonResponse(list_of_data)
+else: 
+    data ={} 
+
+return JsonResponse(data)
+\end{minted}
+
+\subsection{Data Manipulation}
+Data manipulation is a key first step to machine learning as you need to know exactly what type of data your machine learning algorithm is consuming. Data manipulation was done using in the testing.py file and using a Jupyter Notebook - The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more \cite{JNotebook}. Jupyter Notebook was used due to machine learning packages being quite large so it made it much more efficient to use, than being directly install on a virtual environment. The following is the code from Jupyter Notebook that is manipulating a weather data set so that it fits the model:
+
+\begin{minted}{Python}
+\%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+#Reading the dataset 
+dataset = pd.read_csv('./dly1875.csv')
+dataset 
+
+#Displaying columns in dataset
+print("Column names:")
+for col in dataset.columns:    
+    print(col)
+    
+#Dropping the unnesscary columns in the dataset
+dataset = dataset.drop(columns=['date','ind','ind.1','ind.2',
+'ind.3','ind.4','ind.5','igmin','gmin','hg',])
+dataset
+
+#Moving rain column to the end of dataset
+cols_at_end = ['rain']
+dataset = dataset[[c for c in dataset if c not in cols_at_end] 
+        + [c for c in cols_at_end if c in dataset]]
+dataset
+
+#Save the cleaned dataset 
+dataset.to_csv('Athenry2010-2021.csv')
+
+\end{minted}
+
+\subsection{Machine Learning}
+The machine learning part of the Back-end attempted to get the next day prediction of the level of rainfall for the above manipulated data set. The following code will show the attempt in getting this to work using the Linear Regression model:
+
+\begin{minted}{Python}
+#Importing the required libaries
+import pandas as pd
+import numpy as np
+import sklearn as sk
+from sklearn import datasets, linear_model
+from sklearn.linear_model import LinearRegression as lm
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+
+# Read the cleaned data
+data = pd.read_csv("./Athenry2010-2021.csv")
+
+data =data[data['cbl'].str.strip().astype(bool)]
+
+y=data.rain
+x=data.drop('rain',axis=1)
+
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2)
+
+x_train.head()
+
+x_train.shape
+
+x_test.head()
+
+x_test.shape
+
+model=lm().fit(x_train,y_train)
+predictions=model.predict(x_test)
+
+day_index = 798
+days = [i for i in range(Y.size)]
+
+from sklearn.metrics import mean_absolute_error, median_absolute_error
+print("The Mean Absolute Error: \%.2f mm of rainfall" \% mean_absolute_error(y_test, predictions))
+print("The Median Absolute Error: \%.2f mm of rainfall" \% median_absolute_error(y_test, predictions))
+
+# The output from above
+# The Mean Absolute Error: 3.21 mm of rainfall
+# The Median Absolute Error: 2.25 mm of rainfall
+
+\end{minted}
+
 \section{Unified Modeling Language (UML)}
 This section will show the UML for the project.
 
@@ -919,39 +1067,83 @@ This section will show the UML for the project.
 \end{figure}
 
 
-\begin{itemize}
-\item Architecture, UML, etc. An overview of the different components of the system. Diagrams etc… Screenshots etc.
-\end{itemize}
-
-\begin{table}[h]
-  \centering
-  \begin{tabular}{x{2cm}p{3cm}}
-    \toprule \\
-    Column 1 & Column 2 \\
-    \midrule \\
-    Rows 2.1 & Row 2.2 \\
-    \bottomrule
-  \end{tabular}
-  \caption{A table.}
-  \label{table:mytable}
-\end{table}
-
 \chapter{System Evaluation}
-As many pages as needed.
+\section{Robust}
+It was critical from the beginning that this application be robust, as robustness is a basic requirement of any genuine weather application. This section will describe how the application went about achieving robustness.
+
+\subsection{Data Reliability}
+While the application's components load quickly and data is retrieved reliably and quickly, there might be a small lag when using components like the Searching City, which allow calls to third-party APIs to retrieve data from different websites. The loading of components becomes much faster and barely visible with thanks to the RESTful design because it does not depend on constant calls to the server.
+
+\subsection{Error Checking}
+The application has been thoroughly checked for bugs and there has been an implementation of error handling where necessary. However, the application is not bug-free, which is to be expected given that no sophisticated piece of software is completely bug-free. There are some known errors that occur in the application which were not fixed in time:
+
 \begin{itemize}
-\item Prove that your software is robust. How? Testing etc. 
-\item Use performance benchmarks (space and time) if algorithmic.
-\item Measure the outcomes / outputs of your system / software against the objectives from the Introduction.
-\item Highlight any limitations or opportuni-ties in your approach or technologies used.
+    \item Pointer does not appear when area is chosen on the map. There is meant to be a red marker appearing for the new location chosen. 
 \end{itemize}
+
+\section{Objectives Review}
+This section will describe the outputs of the application against the objectives stated in the Introduction Section and if they were achieved or not.
+
+\subsection{User-friendly web application}
+
+The application does seem to fit into a user-friendly environment as the features there are made more easily accessible to the user. The main features do not require the user to complete various tasks to get the desired outcome. 
+
+\subsection{Fully Functional Weather Predictions}
+
+The application does not meet this objective I feel as it is not accessible for the end user. 
+
+\subsection{Consistent Forecasts}
+
+The application does meet this objective as the open weather API provides the application with consistent weather forecasts, whenever the user enters their desired location. 
+
+\subsection{Login and Register System}
+
+The application does not meet this objective as the login and register system was not implemented due to time constraints. 
+
+\subsection{About Page Providing Information on the Application}
+
+The application does meet this objective as there is an About page on the application which provides information on the application.
+
+\subsection{Visually Pleasing Design}
+
+The application does meet this objective as it is visually pleasing design of components. The background image with all the other components built on top of it provides an aesthetically pleasing design.
+
+\subsection{Similar Features to Competitor Applications}
+
+The application does and does not meet this objective. It has some similar features to other weather providing applications, however, it does not have enough similar features to compete with competitor applications. 
 
 \chapter{Conclusion}
-About three pages.
+\section{Learning Outcomes}
+In this section I will discuss from a personal standpoint my learning outcomes from developing this project. I will list what I have learned from this project below.
 
+\subsection{React}
+I learned a lot about React during this project, I had used it previously for short few weeks in another module but did not go into as much detail. I gained a lot of knowledge about various React libraries, including the one I used to style the application and especially the Leaflet library to get the map working which was tricky as there was not much support for it. React taught me many different things but the most important was to study the documentation as it will be your best guide throughout the developing phase.
+
+\subsection{Django}
+Django taught me a lot about the Back-end design. Using Django made controlling the Back-end functions easier than any other frameworks I have used. I know I have learned more about how a back-end should function correctly to support the front-end.
+
+\subsection{Scope Creep}
+Scope creep was very hard to manage throughout the project as a weather application there many different features the can be added to the application. One of the features I was planning on adding to the project was a live weather radar which would show different weather conditions for the next few hours over a location picked by the user, unfortunately time did not allow this. I combated scope creep by utilising these techniques:
 \begin{itemize}
-\item Briefly summarise your context and ob-jectives (a few lines).
-\item Highlight your findings from the evalua-tion section / chapter and any opportuni-ties identified.
+    \item Project Management - Using some sort of project management tool such as a Gantt chart or Kanban board to visualise your project helped immensely.
+    
+    \item Testing - Testing new features as they are made will help with time rather than leaving testing to the end. 
+    
 \end{itemize}
+
+\section{What I Would Do Differently}
+In this section I will describe the things that I would do differently if given the opportunity to restart the project. 
+
+\subsection{Planning}
+Looking back, there were several things I should have done better. The biggest improvement I would have made, in my opinion, would have been to concentrate more on the planning process and create a more comprehensive design of each role prior to implementation. I think I overlooked the difficulty of machine learning on how to predict weather conditions, spending too much time trying to get it working and even trying to find historical weather data sets was time consuming. I believe I spent a significant amount of time implementing features that were poorly designed, and that if I had taken the time to prepare for these functions ahead of time, I would have had a much easier time implementing them. Even while following the Gantt chart some features proved too time consuming to complete in the time given and ended up not being finished.
+
+\subsection{Work Environment}
+A change of work environment would definitely be done. Due to Covid-19 and college being closed having to work remotely greatly impact my productivity due to a loud environment with family. Slow internet caused many issues with time due to different packages and libraries being install. 
+
+\section{In Closing}
+Finally, this project taught me a lot about how to use my programming skills to build a fully functioning online weather app. It taught me how to create an intuitive user interface with a strong focus on user experience, as well as how to think critically, design clearly, read carefully, and document diligently. I believe I have learned a lot about programming, life, and myself during my four years at GMIT. I have learned to think like a developer and to put a strong focus on quality over quantity when it comes to creating good software. I'd like to express my gratitude to all of the lecturers at GMIT who have helped to nurture and teach me how to better my skills as a developer as well as a student of several different areas of computer science.
+This marks the end of a long journey that has taught me a great deal.
+
 
 \chapter{Appendices}
 \href{https://github.com/MarkReillyGMIT/AppliedProject}{Link to Github Repository}

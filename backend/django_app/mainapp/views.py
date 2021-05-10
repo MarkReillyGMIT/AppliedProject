@@ -7,7 +7,7 @@ import json
 import urllib.request 
 from django.views.decorators.csrf import csrf_exempt
 
-# This class is used for POST request to the Open Weather API. 
+# This class is used to send a POST request to the Open Weather API. 
 
 @csrf_exempt 
 def weather(request): 
