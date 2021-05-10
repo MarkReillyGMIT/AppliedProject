@@ -2,12 +2,11 @@
 
 \chapter*{About this project}
 \paragraph{Abstract}
-A brief description of what the project is, in about two-hundred and fifty words.
+
+In recent years, the use of weather applications has become increasingly popular as people can receive predicted weather conditions at the click of a button. Increased availability and access to the internet are other factors that contribute to the rise in their popularity. There are a wide variety of weather applications available that provide a consistent and reliable forecast for the customer. However, most of these applications depend solely on application programming interface (API) data and very few integrate both API and machine learning data into one application. Therefore, this project aimed to develop a full-stack weather application that uses both API data and machine learning to predict certain weather conditions. The application was developed using scrum an agile methodology that allowed for complete control over the development phase. ReactJS provided the front-end capabilities along with different libraries. Django provided the back-end functions along with granting access to PostgreSQL. In the application, I was able to meet the majority of the project objectives and provide a working full-stack weather application without an implemented machine learning section for providing weather predictions. Future applications could include machine learning and various other features when time constraints are not an issue. 
 
 \paragraph{Authors}
 Mark Reilly
-
-
 
 \chapter{Introduction}
 
@@ -976,7 +975,7 @@ return JsonResponse(data)
 \end{minted}
 
 \subsection{Data Manipulation}
-Data manipulation is a key first step to machine learning as you need to know exactly what type of data your machine learning algorithm is consuming. Data manipulation was done using in the testing.py file and using a Jupyter Notebook - The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more \cite{JNotebook}. Jupyter Notebook was used due to machine learning packages being quite large so it made it much more efficient to use, than being directly install on a virtual environment. The following is the code from Jupyter Notebook that is manipulating a weather data set so that it fits the model:
+Data manipulation is a key first step to machine learning as you need to know exactly what type of data your machine learning algorithm is consuming. Data manipulation was done using the testing.py file and using a Jupyter Notebook - The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more \cite{JNotebook}. Jupyter Notebook was used due to machine learning packages being quite large so it made it much more efficient to use, than being directly install on a virtual environment. The following is the code from Jupyter Notebook that is manipulating a weather data set so that it fits the model:
 
 \begin{minted}{Python}
 \%matplotlib inline
@@ -1117,7 +1116,7 @@ The application does and does not meet this objective. It has some similar featu
 In this section I will discuss from a personal standpoint my learning outcomes from developing this project. I will list what I have learned from this project below.
 
 \subsection{React}
-I learned a lot about React during this project, I had used it previously for short few weeks in another module but did not go into as much detail. I gained a lot of knowledge about various React libraries, including the one I used to style the application and especially the Leaflet library to get the map working which was tricky as there was not much support for it. React taught me many different things but the most important was to study the documentation as it will be your best guide throughout the developing phase.
+I learned a lot about React during this project, I had used it previously for a short few weeks in another module but did not go into as much detail. I gained a lot of knowledge about various React libraries, including the one I used to style the application and especially the Leaflet library to get the map working which was tricky as there was not much support for it. React taught me many different things but the most important was to study the documentation as it will be your best guide throughout the developing phase.
 
 \subsection{Django}
 Django taught me a lot about the Back-end design. Using Django made controlling the Back-end functions easier than any other frameworks I have used. I know I have learned more about how a back-end should function correctly to support the front-end.
