@@ -3,7 +3,7 @@ import {MapComponent} from './Map'
 import { ViewData } from './ViewData'
 import styles from './styles/app.module.css'
 import useTemperatureApi from './hooks/useTemperatureApi'
-import '../App.css';
+import '../index.css';
 
 
 const Radar = () => {
@@ -14,6 +14,7 @@ const Radar = () => {
   }
   
   return (
+    <div className= "container">
     <div className={styles.wrapperGlobal}>
       <div className={styles.wrapperMap}>
         <MapComponent onClickPosition={handleClickNewPosition}/>
@@ -35,6 +36,7 @@ const Radar = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

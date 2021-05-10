@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * This class is used to style, create and export
+ * the Search bar component located on the home
+ * page.
+ */
 
+// Styling of search bar.
 const SearchBar = styled.form`
   top: ${({ showResult }) => (showResult ? '0%' : '30%')};
   position: relative;

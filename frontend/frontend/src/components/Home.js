@@ -63,6 +63,7 @@ class Home extends React.Component {
     });
   };
 
+  // Function Sends post request to Django Framework with a parameter.
   handleSearchCity = e => {
     e.preventDefault();
     const { value } = this.state;
@@ -144,8 +145,6 @@ class Home extends React.Component {
     return (
       <div className="container">  
       <Navbar/>   
-        <AppTitle showLabel={(weatherInfo || error) && true}>Precise Weather</AppTitle>
-        
         <WeatherWrapper>
         
           <AppTitle secondary showResult={(weatherInfo || error) && true}>

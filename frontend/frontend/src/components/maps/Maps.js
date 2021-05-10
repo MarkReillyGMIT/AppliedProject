@@ -124,7 +124,7 @@ export default class Maps extends React.Component {
         </ListGroup>}
 
         {!this.state.city && this.state.connectionError=="TypeError: Cannot read property 'country' of undefined" && <ListGroup>
-          <ListGroup.Item>{this.state.connectionError}<br />Wrong latitude or longitude (you scrolled the whole map)</ListGroup.Item>
+          <ListGroup.Item>{this.state.connectionError}<br />Wrong latitude or longitude</ListGroup.Item>
         </ListGroup>}
         {this.state.date && this.state.temperature && <MapsForm city={this.state.city} country={this.state.country} temperature={this.state.temperature} forecast={this.state.forecast} date={this.state.date} description={this.state.description} connectionError={this.state.connectionError} /> }
             

@@ -5,7 +5,7 @@ import { Loader } from './Loader'
 export const ViewData = ({ dataWeather = {}, isLoadingApi, errorApi }) => {
   return (
     <div className={styles.viewData}>
-      <h2 className={styles.title}>Weather Data</h2>
+      <h2 className={styles.title}>Weather for</h2>
       {errorApi && <div className='errorDisplay'><span>⚠ {errorApi} ⚠</span></div>}
       <div className={styles.wrapperInfoTemperature}>
         <div className={styles.wrapperTemperature}>
