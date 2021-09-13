@@ -37,13 +37,6 @@ Prerequisites
 
 Click on the [Youtube](https://youtu.be/TENtP42GQh8) link to view the application in action.
 
-## Project Management
-### Gantt Chart
 
-Status Indicator:
-- Grey = Task is uncompleted.
-- Blue = Task is completed.
-
-![alt-text](https://github.com/MarkReillyGMIT/AppliedProject/blob/main/ReadMeFiles/GanttChart2.gif)
 
 
